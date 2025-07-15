@@ -5,6 +5,7 @@ import connectDB from './src/configs/db.js'
 import cors from 'cors'
 import userRouter from './src/routers/userRoutes.js'
 import errorHandler from './src/middleware/errorHandler.js'
+import taskRouter from './src/routers/taskRoutes.js'
 
 // initialize
 const app = express()
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //--- for route middleware
 app.use('/api/user', userRouter)
+app.use('/api/tasks', taskRouter)
 
 app.get("/",(req,res)=>{
     res.send("This backend for TM")
