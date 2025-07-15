@@ -4,6 +4,7 @@ import { PORT } from './src/configs/index.js'
 import connectDB from './src/configs/db.js'
 import cors from 'cors'
 import userRouter from './src/routers/userRoutes.js'
+import errorHandler from './src/middleware/errorHandler.js'
 
 // initialize
 const app = express()
@@ -17,6 +18,13 @@ app.use(express.urlencoded({ extended: true }))
 //--- for route middleware
 app.use('/api/user', userRouter)
 
+app.get("/",(req,res)=>{
+    res.send("This backend for TM")
+})
+
+
+// --- Global Middlware ---
+app.use(errorHandler)
 
 // connection and server called
 connectDB()
